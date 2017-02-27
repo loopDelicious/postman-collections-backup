@@ -1,0 +1,127 @@
+{
+  "variables": [],
+  "info": {
+    "name": "Random.Org copy",
+    "_postman_id": "e448f86f-f172-8945-08c2-82e46177a9bf",
+    "description": " The randomness comes from atmospheric noise, which for many purposes is better than the pseudo-random number algorithms typically used in computer programs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "5f2c718f-a895-c28f-1ab4-f3d0be19cdff",
+      "name": "Fetch 256 byte Hex",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=256&format=h",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "04832ac5-0a87-d724-80ef-c4303d094bac",
+      "name": "Fetch 64 byte Hex",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests['data=' + _.trim(responseBody).replace(/\\s/g, '')] = true"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=h",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "4416bcc6-67ce-75c8-9537-fe8dc58c0633",
+      "name": "Fetch 256 byte Decimal",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=d",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c15cdfe3-327b-c039-628a-cfc02dcb1a1a",
+      "name": "Fetch 64 byte Decimal",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=d",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "a832ff89-e29f-0014-f6c8-e5b54f3dd449",
+      "name": "Fetch 64 byte Octal",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=o",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "dd2eb8ca-5a75-fcc4-cf85-28f69c5d5fcd",
+      "name": "Fetch 64 byte Binary",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=b",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "5105f347-556b-3ea4-2ceb-ef0c49daac02",
+      "name": "Fetch 64 byte Octet Stream (Download)",
+      "request": {
+        "url": "https://www.random.org/cgi-bin/randbyte?nbytes=64&format=b",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}
