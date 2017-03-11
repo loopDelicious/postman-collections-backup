@@ -1,0 +1,237 @@
+swagger: 2.0
+info:
+  version: 1.0
+  title: Spotify Playlist Generator V2 copy
+  description: "<a href=\"https://docs.google.com/drawings/d/11GIo2IAQmictmFJuxIJ3sj1zi_nFSDlm_uJMLa9I3WE/pub?w=1410&amp;h=772\" target=\"_blank\"><img src=\"https://docs.google.com/drawings/d/11GIo2IAQmictmFJuxIJ3sj1zi_nFSDlm_uJMLa9I3WE/pub?w=1410&amp;h=772\"></a>\n\nThe Spotify playlist generator collection lets you get your daily/weekly dose of fresh music. Modeled on the AMAZING [Spotify Discover Weekly](https://www.spotify.com/discoverweekly/), within 5 minutes you'll be able to set this up, and even tweak it to your heart's content!\n\n### Workflow\n\n<a href=\"https://docs.google.com/drawings/d/1p7imXUIWIC9t5vX4B5jD2XuY6MoYOYcT9I9gJVi87ic/pub?w=1532&amp;h=241\" target=\"_blank\">\n<img src=\"https://docs.google.com/drawings/d/1p7imXUIWIC9t5vX4B5jD2XuY6MoYOYcT9I9gJVi87ic/pub?w=1532&amp;h=241\"></a>\n\n1. Take a list of artists as input\n2. Randomly select an artist from this list and usse Spotify's fantastic [Get Related Artists](https://developer.spotify.com/web-api/console/get-artist-related-artists/) and [Get an Artist's top tracks](https://developer.spotify.com/web-api/console/get-artist-top-tracks/) APIs to mashup a playlist\n3. Add these related artists back to the original list and persist back to the environment\n\n### Setup the Environment\n\nClick on the Run in Postman button above to import the collection and environment template within your app.\n\n1. ##### Spotify\n    * Head to [Spotify Developer](https://developer.spotify.com) and register, then create a new app in the My Applications section. Add the `client_id` and `client_secret` to your environment.\n    * Under the newly created app config, add the following Redirect URI - `https://www.getpostman.com/oauth2/callback`\n    * We'll use the [Authorization Code Flow](https://developer.spotify.com/web-api/authorization-guide/#authorization-code-flow) to obtain the Refresh Token.\n    * Open Postman, under a new request, click on the Authorization tab, select OAuth 2.0 and fill in these values:\n    - Token Name: can be anything\n      - Auth URL: https://accounts.spotify.com/authorize\n      - Access Token URL: https://accounts.spotify.com/api/token\n      - Client ID: {{client_id}}\n      - Client Secret: {{client_secret}}\n      - [Scope](https://developer.spotify.com/web-api/authorization-guide/#scopes): `playlist-read-private playlist-modify-private`\n      - Grant Type: Authorization Code\n      - Request access token locally: Checked\n  * Click on Request Token, go through the OAuth flow, and add the `refresh_token` to your environment\n     \n2. ##### Postman Cloud API\n    * Generate a Cloud API key [here](https://app.getpostman.com/dashboard/integrations)\n    * Store this value under `postman_api_key`\n    * (Optional) For a smarter generation, we'll want to the environment to update as well. Get the newly created environment id using the Cloud API as outlined [here](https://api.getpostman.com/#dbd079-e3e1-aa08-7e21-66f55df99351). In your environment, set the `environment_id` value to the uid obtained above\n\n3. ##### Collection Config\n  Set the following variables in your environment\n  * `user_id`: your spotify username\n  * `country_code`:  in [ISO 3166-1](http://en.wikipedia.org/wiki/ISO3166-1alpha-2) format\n  * `N`: defaults to 5. Refer to the algorithm section for more details\n  * `artists`: List of seed artists for the collection. You can find them as part of the Spotify artist link (Available in the app): e.g. for Oasis, the link looks something like https://open.spotify.com/artist/2DaxqgrOhkeH0fpeiQq2f4, choose the last section. The artists variable is an array of strings, so it'll look something like: [\"2DaxqgrOhkeH0fpeiQq2f4\", \"2ooIqOf4X2uz4mMptXCtie\"]\n\n### Run and Schedule the Collection\n\n1. To verify that everything works as expected, run the collection in the Postman app using the [Collection Runner](https://www.getpostman.com/docs/running_collections)\n2. Now you can use [Postman Monitors](https://monitor.getpostman.com/) to schedule the collection run daily or monthly. \n  \n<a href=\"https://docs.google.com/drawings/d/1urC-cLZXeE7ot59jOptURcHMCX4oeRAiUTFzADAU9wQ/pub?w=1437&amp;h=839\" target=\"_blank\"><img src=\"https://docs.google.com/drawings/d/1urC-cLZXeE7ot59jOptURcHMCX4oeRAiUTFzADAU9wQ/pub?w=1437&amp;h=839\"></a>"
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: example.com
+basePath: /
+securityDefinitions:
+  auth:
+    type: basic
+    x-testValue: []
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  //accounts.spotify.com/api/token:
+    post:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Get Auth Key
+      produces:
+      - application/json
+      parameters:
+      - name: grant_type
+        in: formData
+        required: true
+        type: string
+      - name: refresh_token
+        in: formData
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: //accounts.spotify.com/api/token
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: grant_type=refresh_token&refresh_token={{refresh_token}}
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Get Auth Key
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/artists/{id}:
+    get:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Get Artist
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/artists/{id}/related-artists:
+    get:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Get Related Artists
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/users/{user_id}/playlists:
+    post:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Create a Playlist
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/CreateAPlaylistrequest'
+      - name: user_id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/artists/{artist_id}/top-tracks:
+    get:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Get Artist Top Tracks
+      produces:
+      - application/json
+      parameters:
+      - name: country
+        in: query
+        required: true
+        type: string
+      - name: artist_id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/users/{user_id}/playlists/{playlist_id}/tracks:
+    post:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Add Tracks to Playlist
+      produces:
+      - application/json
+      parameters:
+      - name: uris
+        in: query
+        required: true
+        type: string
+      - name: user_id
+        in: path
+        required: true
+        type: string
+      - name: playlist_id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /environments/{environment_id}:
+    put:
+      description: 'TODO: Add Description'
+      tags:
+      - Misc
+      operationId: Update environment
+      produces:
+      - application/json
+      parameters:
+      - name: X-Api-Key
+        in: header
+        required: true
+        type: string
+      - name: environment_id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+definitions:
+  CreateAPlaylistrequest:
+    title: Create a PlaylistRequest
+    type: object
+    properties:
+      name:
+        type: string
+      public:
+        type: boolean
+    required:
+    - name
+    - public
