@@ -440,30 +440,17 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\"select\" : \"{{nextEffect}}\"}"
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/effects",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "effects"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects"
           },
           "response": [
             {
@@ -569,7 +556,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
@@ -619,29 +611,17 @@
           ],
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}",
             "description": "Requires an authorization token of an existing user."
           },
           "response": [
