@@ -3335,31 +3335,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmMode",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "rhythm",
-                "rhythmMode"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmMode",
             "description": "Allows the user to control the sound source for the Rhythm. Writing 0 to this field sets the Rhythm's sound source to the microphone, and writing 1 to the field sets the sound source to the aux cable."
           },
           "response": [
