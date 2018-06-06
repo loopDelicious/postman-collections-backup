@@ -334,31 +334,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/effects/effectsList",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "effects",
-                "effectsList"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects/effectsList"
           },
           "response": [
             {
@@ -440,30 +426,17 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\"select\" : \"{{nextEffect}}\"}"
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/effects",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "effects"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects"
           },
           "response": [
             {
@@ -569,7 +542,12 @@
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
