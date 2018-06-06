@@ -1142,17 +1142,30 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                "state"
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            },
             "description": "Duration field is optional, and specified in seconds."
           },
           "response": [
@@ -1223,12 +1236,7 @@
           ],
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
@@ -1310,17 +1318,30 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\"hue\" : {\"value\":120}}"
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                "state"
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            }
           },
           "response": [
             {
