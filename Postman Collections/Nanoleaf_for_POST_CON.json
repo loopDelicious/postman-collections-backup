@@ -1510,31 +1510,17 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\"sat\" : {\"value\": 20}}"
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "state",
-                "sat"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat"
           },
           "response": [
             {
