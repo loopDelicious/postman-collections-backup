@@ -2931,31 +2931,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmId",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "rhythm",
-                "rhythmId"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmId",
             "description": "Indicates the Rhythm's Id in the Light Panel system."
           },
           "response": [
