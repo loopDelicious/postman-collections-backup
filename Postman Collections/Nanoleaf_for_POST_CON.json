@@ -131,17 +131,30 @@
           ],
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/"
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            }
           },
           "response": [
             {
@@ -321,17 +334,31 @@
           ],
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects/effectsList"
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/effects/effectsList",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                "effects",
+                "effectsList"
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            }
           },
           "response": [
             {
@@ -413,17 +440,30 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": "{\"select\" : \"{{nextEffect}}\"}"
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects"
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/effects",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                "effects"
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            }
           },
           "response": [
             {
