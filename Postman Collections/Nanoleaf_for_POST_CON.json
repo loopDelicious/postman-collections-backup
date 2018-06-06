@@ -1604,31 +1604,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/ct",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "state",
-                "ct"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/ct",
             "description": "1.5.0:\n\n- Min and max values returned for ct are wrong. They should be 1200-6500, but are returned 0-100."
           },
           "response": [
