@@ -569,12 +569,7 @@
           ],
           "request": {
             "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
@@ -624,17 +619,29 @@
           ],
           "request": {
             "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}",
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}"
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            },
             "description": "Requires an authorization token of an existing user."
           },
           "response": [
@@ -710,17 +717,30 @@
           ],
           "request": {
             "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
+            "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/"
+            "url": {
+              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/",
+              "protocol": "http",
+              "host": [
+                "{{ipAddress}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "{{authToken}}",
+                ""
+              ],
+              "variable": [
+                {
+                  "key": "auth_token",
+                  "value": "{{authToken}}"
+                }
+              ]
+            }
           },
           "response": [
             {
