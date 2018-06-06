@@ -1042,31 +1042,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/brightness",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "state",
-                "brightness"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/brightness"
           },
           "response": [
             {
@@ -1142,30 +1128,17 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "state"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
             "description": "Duration field is optional, and specified in seconds."
           },
           "response": [
@@ -1236,7 +1209,12 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
@@ -1318,30 +1296,17 @@
           ],
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\"hue\" : {\"value\":120}}"
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "state"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            }
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
           },
           "response": [
             {
