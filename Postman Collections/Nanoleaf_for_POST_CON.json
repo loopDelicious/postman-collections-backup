@@ -2691,31 +2691,17 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": ""
             },
-            "url": {
-              "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmConnected",
-              "protocol": "http",
-              "host": [
-                "{{ipAddress}}"
-              ],
-              "path": [
-                "api",
-                "v1",
-                "{{authToken}}",
-                "rhythm",
-                "rhythmConnected"
-              ],
-              "variable": [
-                {
-                  "key": "auth_token",
-                  "value": "{{authToken}}"
-                }
-              ]
-            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/rhythm/rhythmConnected",
             "description": "Indicates if the Rhythm is connected to the Light Panels or not."
           },
           "response": [
