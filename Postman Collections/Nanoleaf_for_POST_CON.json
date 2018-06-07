@@ -2349,7 +2349,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"write\" : {\"command\" : \"request\", \"animName\" : \"Northern Lights\"}}"
+              "raw": "{\"write\" :{\n                     \"command\" : \"add\",\n                     \"animName\" : \"KinLane\",\n                     \"animType\" : \"random\",\n                     \"colorType\" : \"HSB\",\n                     \"animData\" : null,\n                     \"palette\" : [\n                     {\n                     \"hue\" : 0,\n                     \"saturation\" : 0,\n                     \"brightness\" : 0\n                     },\n                     {\n                     \"hue\" : 0,\n                     \"saturation\" : 0,\n                     \"brightness\" : 100\n                     }\n                     ],\n                     \"brightnessRange\" : {\n                     \"minValue\" : 25,\n                     \"maxValue\" : 100\n                     },\n                     \"transTime\" : {\n                    \"maxValue\":20,\n                    \"minValue\":19\n                    },\n                    \"delayTime\" : {\n                    \"maxValue\":3,\n                    \"minValue\":3\n                    },\n                     \n                     \"loop\" : true \n}\n}"
             },
             "url": "http://{{ipAddress}}/api/v1/{{authToken}}/effects"
           },
@@ -3658,28 +3658,28 @@
   ],
   "variable": [
     {
-      "id": "91185f9b-51b6-4cef-8069-2f238330a475",
+      "id": "ca4dffe8-e121-487a-894c-c31daa9920d8",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "d0fbb85a-89ca-4c46-bc81-3ed67974d818",
+      "id": "f7988919-6745-4de1-8382-401acf303e69",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "6ebd9bd8-de22-4bf0-81a4-550f2e015595",
+      "id": "fd0adf9a-3cd3-482c-a1ac-30b55af1fe3e",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "4e85b0dd-a077-4359-adee-d0c6ea46098e",
+      "id": "65b5b8ec-8f61-489f-918d-5242bb61be59",
       "value": "",
       "type": "string",
       "disabled": true,
