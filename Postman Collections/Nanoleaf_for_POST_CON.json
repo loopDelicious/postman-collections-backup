@@ -1995,6 +1995,301 @@
       ]
     },
     {
+      "_postman_id": "d19f5652-11b8-43b7-be1e-c9755a9428a2",
+      "name": "Change Color From Hex",
+      "description": "Put a hex value in the folder variables to convert it to HSL on the nanoleaf",
+      "item": [
+        {
+          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
+          "name": "HexToHue",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c6a1d0f5-9b34-4d74-9a44-63f00bb64ed3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.setNextRequest(\"HexToSaturation\");"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.variable.set(\"saturation\", s);",
+                  "    pm.variables.set(\"light\", l);",
+                  "    pm.variables.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "_postman_id": "18a690f2-3d3d-420b-9ba0-48b10a7d18e9",
+          "name": "HexToSaturation",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7483284-1893-45ec-ba8f-7732346f755a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "",
+                  "pm.setNextRequest(\"HexToBrightness\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sat\" : {\"value\": {{saturation}}}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat"
+          },
+          "response": [
+            {
+              "id": "f6b4625d-07e5-4372-a938-ac4a9e685860",
+              "name": "Saturation - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"sat\" : {\"value\": 20}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state",
+                    "sat"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "_postman_id": "a357b6dd-0f01-4bdf-b79c-d93778690102",
+          "name": "HexToBrightness",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4d764eec-299f-469d-bf3d-ecb6c6f05887",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.setNextRequest(null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"brightness\" : {\"value\":{{light}}, \"duration\":30}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+            "description": "Duration field is optional, and specified in seconds."
+          },
+          "response": [
+            {
+              "id": "17fba8da-238f-4c09-8890-254baf57aaa1",
+              "name": "Brightness - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
       "_postman_id": "6fc80cbf-2982-4a09-8b12-73830450953c",
       "name": "Panel Layout",
       "description": null,
@@ -3217,301 +3512,6 @@
           ]
         }
       ]
-    },
-    {
-      "_postman_id": "d19f5652-11b8-43b7-be1e-c9755a9428a2",
-      "name": "Change Color From Hex",
-      "description": "Put a hex value in the folder variables to convert it to HSL on the nanoleaf",
-      "item": [
-        {
-          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
-          "name": "HexToHue",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c6a1d0f5-9b34-4d74-9a44-63f00bb64ed3",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  "pm.setNextRequest(\"HexToSaturation\");"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
-                "type": "text/javascript",
-                "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.variable.set(\"saturation\", s);",
-                  "    pm.variables.set(\"light\", l);",
-                  "    pm.variables.set(\"hue\", h);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
-          },
-          "response": [
-            {
-              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
-              "name": "Hue - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"hue\" : {\"value\":120}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
-          "_postman_id": "18a690f2-3d3d-420b-9ba0-48b10a7d18e9",
-          "name": "HexToSaturation",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f7483284-1893-45ec-ba8f-7732346f755a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  "",
-                  "pm.setNextRequest(\"HexToBrightness\");"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"sat\" : {\"value\": {{saturation}}}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat"
-          },
-          "response": [
-            {
-              "id": "f6b4625d-07e5-4372-a938-ac4a9e685860",
-              "name": "Saturation - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"sat\" : {\"value\": 20}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state",
-                    "sat"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
-          "_postman_id": "a357b6dd-0f01-4bdf-b79c-d93778690102",
-          "name": "HexToBrightness",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4d764eec-299f-469d-bf3d-ecb6c6f05887",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  "pm.setNextRequest(null);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"brightness\" : {\"value\":{{light}}, \"duration\":30}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-            "description": "Duration field is optional, and specified in seconds."
-          },
-          "response": [
-            {
-              "id": "17fba8da-238f-4c09-8890-254baf57aaa1",
-              "name": "Brightness - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        }
-      ]
     }
   ],
   "event": [
@@ -3538,28 +3538,28 @@
   ],
   "variable": [
     {
-      "id": "af1699ce-8b35-4055-859c-f0a4832c08e6",
+      "id": "933ece63-2451-48f0-a2da-c6feea13db74",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a7e93337-ddca-489d-9994-d2beb6a7e251",
+      "id": "10383439-03d7-4193-b41c-dcdfa469dbb0",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "a1297821-08e3-413e-b1da-9f082d7b7e51",
+      "id": "9e18906e-ddf3-4427-a2cb-acf5c242d8b0",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1c3f1ebb-99f6-4c3b-9705-1597e02a51f1",
+      "id": "0b689d13-3f63-4a42-a1ff-6d4685e30a87",
       "key": "light",
       "value": "100",
       "type": "string",
