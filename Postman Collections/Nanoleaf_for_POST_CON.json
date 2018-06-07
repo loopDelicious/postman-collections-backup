@@ -3538,31 +3538,31 @@
   ],
   "variable": [
     {
-      "id": "ea6dd38e-2765-4f71-af70-d85070116464",
-      "key": "hexValue",
-      "value": "6ecadc",
+      "id": "117aa152-868b-4965-ad79-95f8d74b9674",
+      "value": "",
       "type": "string",
+      "disabled": true,
       "description": ""
     },
     {
-      "id": "6a8d7fcb-44c4-41cd-a076-24753e186a72",
-      "key": "hue",
-      "value": "100",
+      "id": "cc8d48a0-1c23-49e9-8302-d8eee66f2194",
+      "value": "",
       "type": "string",
+      "disabled": true,
       "description": ""
     },
     {
-      "id": "e5564886-e444-4313-820f-f0f406275f75",
-      "key": "saturation",
-      "value": "100",
+      "id": "61fc28fd-41e6-4d9a-922a-1d2b7ce815ac",
+      "value": "",
       "type": "string",
+      "disabled": true,
       "description": ""
     },
     {
-      "id": "f5666dc7-5f23-45b0-bb78-75c7690d397e",
-      "key": "light",
-      "value": "100",
+      "id": "1b444fac-1bb2-44fb-8830-48e24ae69a5a",
+      "value": "",
       "type": "string",
+      "disabled": true,
       "description": ""
     }
   ]
