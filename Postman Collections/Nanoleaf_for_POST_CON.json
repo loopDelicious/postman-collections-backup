@@ -3483,7 +3483,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"brightness\" : {\"value\":\"{{light}}\", \"duration\":30}}"
+              "raw": "{\"brightness\" : {\"value\":{{light}}, \"duration\":30}}"
             },
             "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
             "description": "Duration field is optional, and specified in seconds."
@@ -3563,28 +3563,28 @@
   ],
   "variable": [
     {
-      "id": "3208ac62-05b9-4134-a122-127f1c57426f",
+      "id": "6a18ed2f-7f28-4f07-a928-4cb8f88152a4",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "59c8dca5-3957-4ff5-a9a1-a9b7f349bb26",
+      "id": "b56074d5-969b-42a3-94d3-3c4f31af6150",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f52baf0c-75f7-48f6-a8ae-6cc5861743b0",
+      "id": "35012670-c00f-47db-93af-156cff2483b3",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9f8982fc-f188-4acc-9e21-d147835fabb6",
+      "id": "370c46c7-d803-49e6-8deb-dbaf5f9d14d5",
       "key": "light",
       "value": "100",
       "type": "string",
