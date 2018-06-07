@@ -2283,127 +2283,6 @@
               "body": "{\"numPanels\":3,\"sideLength\":150,\"positionData\":[{\"panelId\":186,\"x\":-74,\"y\":43,\"o\":180},{\"panelId\":55,\"x\":-74,\"y\":129,\"o\":0}]}"
             }
           ]
-        },
-        {
-          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
-          "name": "Hue - update Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9aa09750-d124-498f-815e-1a6799030607",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
-                "type": "text/javascript",
-                "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.variable.set(\"saturation\", s);",
-                  "    pm.variables.set(\"light\", l);",
-                  "    pm.variables.set(\"hue\", h);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
-          },
-          "response": [
-            {
-              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
-              "name": "Hue - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"hue\" : {\"value\":120}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
         }
       ]
     },
@@ -3375,7 +3254,129 @@
       "_postman_id": "d19f5652-11b8-43b7-be1e-c9755a9428a2",
       "name": "Change Color From Hex",
       "description": "Put a hex value in the folder variables to convert it to HSL on the nanoleaf",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
+          "name": "Hue - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9aa09750-d124-498f-815e-1a6799030607",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.variable.set(\"saturation\", s);",
+                  "    pm.variables.set(\"light\", l);",
+                  "    pm.variables.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ]
     }
   ],
   "event": [
@@ -3402,28 +3403,28 @@
   ],
   "variable": [
     {
-      "id": "54e880e2-cd65-42fe-aacd-f8881961d1b5",
+      "id": "7d30efef-4344-4228-be1e-3260430e4162",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1416858-d8b3-4558-9cd0-b85e05acc6b6",
+      "id": "89b124f9-e804-4fe2-8e6f-448883a68c6d",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f96c23fc-4a82-41ee-86fc-6a93e0b6b21b",
+      "id": "62b08447-0288-486f-ae5e-a7d76deb3471",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1802d4da-8eab-4059-bb2c-e6870e86e69b",
+      "id": "afe0be6d-55c0-4430-86ab-1823cd89dfcc",
       "key": "light",
       "value": "",
       "type": "string",
