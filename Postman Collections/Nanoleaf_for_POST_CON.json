@@ -1557,86 +1557,6 @@
           ]
         },
         {
-          "_postman_id": "c1ce2598-7e33-4817-afa9-ee3122501aa2",
-          "name": "Color Temperature - update Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ccdd172d-1a36-4155-a2b7-b92f0f96db4b",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"ct\" : {\"value\": 3000}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-            "description": "1.5.0:\n\n- Min and max values returned for ct are wrong. They should be 1200-6500, but are returned 0-100."
-          },
-          "response": [
-            {
-              "id": "6a81be89-2da8-4920-9bb5-c882fedb58e7",
-              "name": "Color Temperature - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"ct\" : {\"value\": 3000}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
           "_postman_id": "f27b65ea-2a4b-4026-ab14-267289d45da7",
           "name": "Color Mode",
           "event": [
@@ -2361,6 +2281,86 @@
               "cookie": [],
               "responseTime": null,
               "body": "{\"numPanels\":3,\"sideLength\":150,\"positionData\":[{\"panelId\":186,\"x\":-74,\"y\":43,\"o\":180},{\"panelId\":55,\"x\":-74,\"y\":129,\"o\":0}]}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "c1ce2598-7e33-4817-afa9-ee3122501aa2",
+          "name": "Color Temperature - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ccdd172d-1a36-4155-a2b7-b92f0f96db4b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ct\" : {\"value\": 3000}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+            "description": "1.5.0:\n\n- Min and max values returned for ct are wrong. They should be 1200-6500, but are returned 0-100."
+          },
+          "response": [
+            {
+              "id": "6a81be89-2da8-4920-9bb5-c882fedb58e7",
+              "name": "Color Temperature - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"ct\" : {\"value\": 3000}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
             }
           ]
         }
@@ -3563,28 +3563,28 @@
   ],
   "variable": [
     {
-      "id": "4609aa90-58ee-4bf8-b1b4-1c748d7c3c9a",
+      "id": "685cb777-b6b5-4803-818f-b52ff6e367af",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "0a6b1046-4ddb-4c12-9352-53dd4e14836c",
+      "id": "ebc49305-27ed-45be-bb4e-e80698c81720",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7e079f7e-bf81-4df9-9b27-f74367ef014c",
+      "id": "76cf57ec-cb3a-46aa-843e-2f5be1fb82aa",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "eb49fe4b-85aa-424f-b061-152c918f37c3",
+      "id": "71619799-8788-40ea-871f-8897eb51d039",
       "key": "light",
       "value": "",
       "type": "string",
