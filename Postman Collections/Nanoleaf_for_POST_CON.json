@@ -3225,7 +3225,7 @@
       "item": [
         {
           "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
-          "name": "Hue - update Copy",
+          "name": "HexToHue",
           "event": [
             {
               "listen": "test",
@@ -3531,28 +3531,28 @@
   ],
   "variable": [
     {
-      "id": "461cd98f-924b-48d7-8610-108d5749092e",
+      "id": "51035a72-d4c3-4864-837b-09a77ebf3b9f",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5248d420-e91d-4465-ad69-2d33025f6215",
+      "id": "83e54ef2-51b7-4867-81bb-b2c48d6f6ad8",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9c39f8a3-252b-40af-805f-9f68b5baa396",
+      "id": "cf563dbf-3902-49ad-898b-29ffacb7eb82",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "104a53fa-1d13-423b-a2fa-b8c269743f80",
+      "id": "86cda493-5029-488e-8d63-4f2ce207361c",
       "key": "light",
       "value": "100",
       "type": "string",
