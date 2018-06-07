@@ -1121,10 +1121,10 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "439220a8-e677-458e-a8e0-3bc165355480",
+                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
                 "type": "text/javascript",
                 "exec": [
-                  "   var bigint = parseInt({{hexValue}}, 16);",
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
                   "    var r = (bigint >> 16) & 255;",
                   "    var g = (bigint >> 8) & 255;",
                   "    var b = bigint & 255;",
@@ -1152,6 +1152,10 @@
                   "    l = l*100;",
                   "    l = Math.round(l);",
                   "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.variable.set(\"saturation\", s);",
+                  "    pm.variables.set(\"light\", l);",
+                  "    pm.variables.set(\"hue\", h);",
                   ""
                 ]
               }
@@ -3277,28 +3281,28 @@
   ],
   "variable": [
     {
-      "id": "885144f1-67b6-4738-aff8-5bbe58b13586",
+      "id": "a269f1aa-88e3-4481-a840-73b11cd5730d",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "6f9bb9d5-8d1d-415a-a484-1a9d16210eb3",
+      "id": "7467c4cd-7ae7-4d02-a0ad-3af7829f9f68",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5b2e31f9-1240-418b-8a27-eaeee90206ff",
+      "id": "ce24ecf1-4155-40a4-b430-6600b20f255f",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1d2a713a-a550-4d3a-8be5-9d47ffc423f8",
+      "id": "2ccd6188-efd6-447f-8d66-7b317f5fd46e",
       "key": "light",
       "value": "",
       "type": "string",
