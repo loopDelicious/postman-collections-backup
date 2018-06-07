@@ -141,7 +141,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f7483284-1893-45ec-ba8f-7732346f755a",
+                "id": "9f4cad20-845e-4036-813f-09176743218d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 204\", function () {",
@@ -149,7 +149,7 @@
                   "});",
                   "",
                   "",
-                  "pm.setNextRequest(\"HexToBrightness\");"
+                  ""
                 ]
               }
             }
@@ -3538,28 +3538,28 @@
   ],
   "variable": [
     {
-      "id": "0b5c2ef7-41e4-4ee0-a8b6-bbcc5112eff0",
+      "id": "80e87c0c-84ed-4841-9219-36a8ba5ef72b",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3ec3fdc8-25db-40d5-bef0-ee9561fd90be",
+      "id": "d98e6214-e8a1-410e-a5a6-80216b9a91a7",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8ec88bd4-99a0-4d2e-a18d-0283adab4059",
+      "id": "2f60c009-d9c9-4dc2-81e4-5f59f6a8deb4",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "818623a0-33de-434e-b6c8-0c56eac71810",
+      "id": "2283ae59-aa0b-45b0-af52-1b75c1858b16",
       "key": "light",
       "value": "100",
       "type": "string",
