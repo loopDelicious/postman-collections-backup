@@ -1224,127 +1224,6 @@
           ]
         },
         {
-          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
-          "name": "Hue - update Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9aa09750-d124-498f-815e-1a6799030607",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
-                "type": "text/javascript",
-                "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.variable.set(\"saturation\", s);",
-                  "    pm.variables.set(\"light\", l);",
-                  "    pm.variables.set(\"hue\", h);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
-          },
-          "response": [
-            {
-              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
-              "name": "Hue - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"hue\" : {\"value\":120}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
           "_postman_id": "4f4d8556-68cb-445e-a06d-cbbfc1082061",
           "name": "Saturation",
           "event": [
@@ -2404,6 +2283,127 @@
               "body": "{\"numPanels\":3,\"sideLength\":150,\"positionData\":[{\"panelId\":186,\"x\":-74,\"y\":43,\"o\":180},{\"panelId\":55,\"x\":-74,\"y\":129,\"o\":0}]}"
             }
           ]
+        },
+        {
+          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
+          "name": "Hue - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9aa09750-d124-498f-815e-1a6799030607",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.variable.set(\"saturation\", s);",
+                  "    pm.variables.set(\"light\", l);",
+                  "    pm.variables.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
         }
       ]
     },
@@ -3402,28 +3402,28 @@
   ],
   "variable": [
     {
-      "id": "a42f474d-f9c4-49f4-a915-e5ddce1b24c7",
+      "id": "784cefb4-6cac-415c-957e-06485aff8da6",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "731ff98b-c66b-43b1-b255-edda2276ce42",
+      "id": "de9c72d6-8341-421c-ba36-9933e1d6167f",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3c4867e0-a706-487e-9e17-3e8102127560",
+      "id": "928b9259-5ffb-415b-826d-8261e2fef4be",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b0e9046d-4214-46cb-9da7-f8f1f32e80cb",
+      "id": "51a5a1ec-7884-4f3a-8855-9ecb22d704c9",
       "key": "light",
       "value": "",
       "type": "string",
