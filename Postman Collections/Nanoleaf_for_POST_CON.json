@@ -12,129 +12,6 @@
       "description": "Put a hex value in the folder variables to convert it to HSL on the nanoleaf",
       "item": [
         {
-          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
-          "name": "HexToHue",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e386966e-d705-45fa-a2a2-cb1cbb0d695a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "394f9095-fa01-4458-a9e8-d5037eb7a0c6",
-                "type": "text/javascript",
-                "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.globals.set(\"saturation\", s);",
-                  "    pm.globals.set(\"light\", l);",
-                  "    pm.globals.set(\"hue\", h);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
-          },
-          "response": [
-            {
-              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
-              "name": "Hue - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"hue\" : {\"value\":120}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
           "_postman_id": "48b1edfc-3194-40f3-a867-077730637563",
           "name": "HexToHue Copy",
           "event": [
@@ -212,6 +89,129 @@
           "response": [
             {
               "id": "46c12192-a0ef-49e9-a8be-db83fcc96be5",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
+          "name": "HexToHue",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e386966e-d705-45fa-a2a2-cb1cbb0d695a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "394f9095-fa01-4458-a9e8-d5037eb7a0c6",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.globals.set(\"saturation\", s);",
+                  "    pm.globals.set(\"light\", l);",
+                  "    pm.globals.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
               "name": "Hue - update",
               "originalRequest": {
                 "method": "PUT",
@@ -3658,28 +3658,28 @@
   ],
   "variable": [
     {
-      "id": "34fc3b4e-129b-4d7b-9973-f9dfcce96a08",
+      "id": "ea188933-27c5-493c-a142-419bb3386682",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "6023de5f-baf6-4847-9caf-5c4361e93d6a",
+      "id": "58481e79-74d2-4676-b382-e890d9f06fd5",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "4e753c79-dde4-48de-86e7-88b2eba84cf2",
+      "id": "c0161d75-f0e0-4092-bdce-35b178f3a95d",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "ae7ded30-edb6-4379-b772-502e43f7a82c",
+      "id": "dbff91a4-3ed6-4c13-a59e-01379d64268d",
       "value": "",
       "type": "string",
       "disabled": true,
