@@ -1121,14 +1121,14 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "98f1a817-e1c5-4021-9a18-dfb8eff988ee",
+                "id": "439220a8-e677-458e-a8e0-3bc165355480",
                 "type": "text/javascript",
                 "exec": [
-                  "    var result = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(hex);",
+                  "   var bigint = parseInt({{hexValue}}, 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
                   "",
-                  "    var r = parseInt(result[1], 16);",
-                  "    var g = parseInt(result[2], 16);",
-                  "    var b = parseInt(result[3], 16);",
                   "",
                   "    r /= 255, g /= 255, b /= 255;",
                   "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
@@ -3277,28 +3277,28 @@
   ],
   "variable": [
     {
-      "id": "3bc4884c-048d-45bb-bcf3-5120bff1364b",
+      "id": "885144f1-67b6-4738-aff8-5bbe58b13586",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7aea2034-b6ee-41ae-a673-f2922b09a872",
+      "id": "6f9bb9d5-8d1d-415a-a484-1a9d16210eb3",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "135bcdee-dc81-494e-a193-bfa11d942db5",
+      "id": "5b2e31f9-1240-418b-8a27-eaeee90206ff",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "5ce72d7d-dddd-4e26-ad18-ca0e563eaae8",
+      "id": "1d2a713a-a550-4d3a-8be5-9d47ffc423f8",
       "key": "light",
       "value": "",
       "type": "string",
