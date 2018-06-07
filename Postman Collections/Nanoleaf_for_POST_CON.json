@@ -1117,6 +1117,44 @@
                   "});"
                 ]
               }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "98f1a817-e1c5-4021-9a18-dfb8eff988ee",
+                "type": "text/javascript",
+                "exec": [
+                  "    var result = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(hex);",
+                  "",
+                  "    var r = parseInt(result[1], 16);",
+                  "    var g = parseInt(result[2], 16);",
+                  "    var b = parseInt(result[3], 16);",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  ""
+                ]
+              }
             }
           ],
           "request": {
@@ -1129,7 +1167,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":120}}"
+              "raw": "{\"hue\" : {\"value\":0}}"
             },
             "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
           },
@@ -3239,28 +3277,28 @@
   ],
   "variable": [
     {
-      "id": "a06f10b0-dc99-46ca-a370-21a9050270ae",
+      "id": "5bf6253f-1b0e-4e31-b1e9-b04f88781148",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "3e644747-f69a-42d9-bdae-b1242b860f9a",
+      "id": "9acc68fc-615a-406c-bd8f-da383df3eba7",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "decd5186-5280-4882-acd5-db101baac321",
+      "id": "e192e840-e097-4538-bacd-46e0be2cb511",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "be142933-cb57-432b-990c-2deac42ae564",
+      "id": "941702b7-66e3-4bb9-b365-4acbae812dae",
       "key": "light",
       "value": "",
       "type": "string",
