@@ -3434,12 +3434,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "25f7ba61-583b-41aa-b9c8-1b8a29ce0451",
+                "id": "4d764eec-299f-469d-bf3d-ecb6c6f05887",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 204\", function () {",
                   "    pm.response.to.have.status(204);",
-                  "});"
+                  "});",
+                  "",
+                  "pm.setNextRequest(null);"
                 ]
               }
             }
@@ -3534,28 +3536,28 @@
   ],
   "variable": [
     {
-      "id": "2495f52c-b737-4d6a-a7c0-1e0c7cfaf9b7",
+      "id": "828bbf4a-bae4-4013-b842-c4e8465fafc8",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c21dcb5b-b5a0-41ca-b4a8-aa89480c1d9f",
+      "id": "1cdd3a9e-1da1-4283-8e41-e00c42e96c2a",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b6da19bd-169d-4416-8257-8c4f5362ff44",
+      "id": "f1cd738f-4662-49c1-8da7-2cb3a0bc6cee",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "271b2505-2934-4dca-ba82-592a3defb34e",
+      "id": "bd422c67-995c-4137-aa4a-a830cfed36c8",
       "key": "light",
       "value": "100",
       "type": "string",
