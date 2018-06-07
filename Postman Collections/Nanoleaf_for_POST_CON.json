@@ -1641,6 +1641,127 @@
               "body": "\"ct\""
             }
           ]
+        },
+        {
+          "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
+          "name": "Hue - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9aa09750-d124-498f-815e-1a6799030607",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.variable.set(\"saturation\", s);",
+                  "    pm.variables.set(\"light\", l);",
+                  "    pm.variables.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "01892e1a-710f-4d06-a3cf-032b90899a57",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
         }
       ]
     },
@@ -3281,28 +3402,28 @@
   ],
   "variable": [
     {
-      "id": "a269f1aa-88e3-4481-a840-73b11cd5730d",
+      "id": "1aa25928-2d56-4741-8694-d543fc87f57a",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "7467c4cd-7ae7-4d02-a0ad-3af7829f9f68",
+      "id": "c88da91c-768f-42c4-9080-56e2e81b71e2",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ce24ecf1-4155-40a4-b430-6600b20f255f",
+      "id": "6d74c92d-0d6b-457f-b65e-74995bed6537",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "2ccd6188-efd6-447f-8d66-7b317f5fd46e",
+      "id": "29f38c9e-4301-4bce-81fb-ae57d7c46216",
       "key": "light",
       "value": "",
       "type": "string",
