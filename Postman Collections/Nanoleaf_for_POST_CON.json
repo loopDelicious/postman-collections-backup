@@ -1015,86 +1015,6 @@
           ]
         },
         {
-          "_postman_id": "a357b6dd-0f01-4bdf-b79c-d93778690102",
-          "name": "Brightness - update Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "25f7ba61-583b-41aa-b9c8-1b8a29ce0451",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-            "description": "Duration field is optional, and specified in seconds."
-          },
-          "response": [
-            {
-              "id": "17fba8da-238f-4c09-8890-254baf57aaa1",
-              "name": "Brightness - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
           "_postman_id": "3dc764b9-1539-41e5-8938-e79abb0ab8e0",
           "name": "Hue",
           "event": [
@@ -3210,6 +3130,86 @@
               "body": "{\"x\":0,\"y\":173,\"o\":60}"
             }
           ]
+        },
+        {
+          "_postman_id": "a357b6dd-0f01-4bdf-b79c-d93778690102",
+          "name": "Brightness - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "25f7ba61-583b-41aa-b9c8-1b8a29ce0451",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+            "description": "Duration field is optional, and specified in seconds."
+          },
+          "response": [
+            {
+              "id": "17fba8da-238f-4c09-8890-254baf57aaa1",
+              "name": "Brightness - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"brightness\" : {\"value\":100, \"duration\":30}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
         }
       ],
       "event": [
@@ -3563,28 +3563,28 @@
   ],
   "variable": [
     {
-      "id": "3c8435e5-38be-435c-86c3-c12b6c85ab5c",
+      "id": "4849e6c5-ad7e-4446-8d52-3bd4d6d7658a",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "4427e148-0ee2-4ac2-82c2-72f2f3dff0bf",
+      "id": "4a3d818c-4e5e-4338-8cdd-045568ef5552",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "c258557c-4016-4c35-8506-22c4abc53b80",
+      "id": "051b962a-0453-48bb-86ea-213175d765a5",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "50fa2702-f21b-4323-ab03-b1352453d496",
+      "id": "1a3cff4c-7651-45e4-9a5f-6f8c2c558d78",
       "key": "light",
       "value": "",
       "type": "string",
