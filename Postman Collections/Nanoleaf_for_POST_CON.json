@@ -295,6 +295,129 @@
               "body": ""
             }
           ]
+        },
+        {
+          "_postman_id": "48b1edfc-3194-40f3-a867-077730637563",
+          "name": "HexToHue Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e386966e-d705-45fa-a2a2-cb1cbb0d695a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "394f9095-fa01-4458-a9e8-d5037eb7a0c6",
+                "type": "text/javascript",
+                "exec": [
+                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
+                  "    var r = (bigint >> 16) & 255;",
+                  "    var g = (bigint >> 8) & 255;",
+                  "    var b = bigint & 255;",
+                  "",
+                  "",
+                  "    r /= 255, g /= 255, b /= 255;",
+                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
+                  "    var h, s, l = (max + min) / 2;",
+                  "",
+                  "    if(max == min){",
+                  "        h = s = 0; // achromatic",
+                  "    } else {",
+                  "        var d = max - min;",
+                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
+                  "        switch(max) {",
+                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
+                  "            case g: h = (b - r) / d + 2; break;",
+                  "            case b: h = (r - g) / d + 4; break;",
+                  "        }",
+                  "        h /= 6;",
+                  "    }",
+                  "",
+                  "   s = s*100;",
+                  "    s = Math.round(s);",
+                  "    l = l*100;",
+                  "    l = Math.round(l);",
+                  "    h = Math.round(360*h);",
+                  "    ",
+                  "    pm.globals.set(\"saturation\", s);",
+                  "    pm.globals.set(\"light\", l);",
+                  "    pm.globals.set(\"hue\", h);",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
+          },
+          "response": [
+            {
+              "id": "46c12192-a0ef-49e9-a8be-db83fcc96be5",
+              "name": "Hue - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"hue\" : {\"value\":120}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
         }
       ]
     },
@@ -3535,28 +3658,28 @@
   ],
   "variable": [
     {
-      "id": "60e1b798-2485-448c-8b6e-efefb83be7e8",
+      "id": "27a8ee9e-72c8-4979-9fa4-a5839a0203c4",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "5ef48a5f-f9e0-41c2-b1c1-3aadef0ef1c6",
+      "id": "0ff15de4-120d-426e-b17f-e6a4c25fb5c2",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "6d30e904-2dbd-42a4-9ff4-44fd33304e86",
+      "id": "40ec425e-5ba0-4daf-8ff1-43c6491d51b6",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "ff30fb51-b25e-43f9-9871-3901b824bf66",
+      "id": "11e0be49-dfd2-40e7-ace6-6819c7316562",
       "value": "",
       "type": "string",
       "disabled": true,
