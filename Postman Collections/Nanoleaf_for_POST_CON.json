@@ -3207,6 +3207,12 @@
           ]
         }
       ]
+    },
+    {
+      "_postman_id": "d19f5652-11b8-43b7-be1e-c9755a9428a2",
+      "name": "Change Color From Hex",
+      "description": "Put a hex value in the folder variables to convert it to HSL on the nanoleaf",
+      "item": []
     }
   ],
   "event": [
