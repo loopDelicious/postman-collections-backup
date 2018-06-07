@@ -1121,41 +1121,9 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "id": "76126b46-ba0f-48ff-8152-5893b9b43dce",
                 "type": "text/javascript",
                 "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.variable.set(\"saturation\", s);",
-                  "    pm.variables.set(\"light\", l);",
-                  "    pm.variables.set(\"hue\", h);",
                   ""
                 ]
               }
@@ -3563,28 +3531,28 @@
   ],
   "variable": [
     {
-      "id": "6a18ed2f-7f28-4f07-a928-4cb8f88152a4",
+      "id": "210aa090-9541-48ed-b4a7-8ea39f3d2590",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "b56074d5-969b-42a3-94d3-3c4f31af6150",
+      "id": "11e62210-57d3-41d8-b398-af7ee0bc3a03",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "35012670-c00f-47db-93af-156cff2483b3",
+      "id": "ca794071-1ab4-495e-a4bf-9db73a517a95",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "370c46c7-d803-49e6-8deb-dbaf5f9d14d5",
+      "id": "f13fae56-a96d-4ee8-8680-68bef7849f69",
       "key": "light",
       "value": "100",
       "type": "string",
