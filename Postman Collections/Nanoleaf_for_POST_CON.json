@@ -1641,6 +1641,86 @@
               "body": "\"ct\""
             }
           ]
+        },
+        {
+          "_postman_id": "18a690f2-3d3d-420b-9ba0-48b10a7d18e9",
+          "name": "Saturation - update Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8ea88783-2578-40d1-adfb-bde4fd55f63a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"sat\" : {\"value\": 20}}"
+            },
+            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat"
+          },
+          "response": [
+            {
+              "id": "f6b4625d-07e5-4372-a938-ac4a9e685860",
+              "name": "Saturation - update",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"sat\" : {\"value\": 20}}"
+                },
+                "url": {
+                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state/sat",
+                  "protocol": "http",
+                  "host": [
+                    "{{ipAddress}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "{{authToken}}",
+                    "state",
+                    "sat"
+                  ],
+                  "variable": [
+                    {
+                      "key": "auth_token",
+                      "value": "{{authToken}}"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0",
+                  "name": "Content-Length",
+                  "description": "The length of the response body in octets (8-bit bytes)"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
         }
       ]
     },
@@ -3403,28 +3483,28 @@
   ],
   "variable": [
     {
-      "id": "4a94b3ba-cfbf-4c0f-94ec-9dca604c3527",
+      "id": "ff68d714-2dea-4b60-aa40-2e37334fc189",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "8c4d7f78-7358-43a7-b2dd-06ea67b6cce0",
+      "id": "885d3a2e-ab64-4d1b-9a4a-52d624260571",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "29e6a59c-5750-4aa8-83de-c1c08ed01b41",
+      "id": "856ca00c-f36a-4d31-9cde-80542e045eaf",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ca38ca3e-80e8-424f-9436-e3791d127510",
+      "id": "a0a7ecc6-65e1-40af-be6a-266628136f32",
       "key": "light",
       "value": "",
       "type": "string",
