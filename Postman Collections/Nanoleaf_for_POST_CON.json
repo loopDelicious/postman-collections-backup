@@ -3531,28 +3531,28 @@
   ],
   "variable": [
     {
-      "id": "210aa090-9541-48ed-b4a7-8ea39f3d2590",
+      "id": "6e021f77-6237-42ef-800d-90ce9c76a86e",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "11e62210-57d3-41d8-b398-af7ee0bc3a03",
+      "id": "d3074ce8-8c60-49a8-9840-72318e2f68a1",
       "key": "hue",
-      "value": "",
+      "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "ca794071-1ab4-495e-a4bf-9db73a517a95",
+      "id": "e5627f79-7477-467d-86d7-e06388d5513d",
       "key": "saturation",
-      "value": "",
+      "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f13fae56-a96d-4ee8-8680-68bef7849f69",
+      "id": "3f3310d2-8781-4dc5-993b-11499344fb95",
       "key": "light",
       "value": "100",
       "type": "string",
