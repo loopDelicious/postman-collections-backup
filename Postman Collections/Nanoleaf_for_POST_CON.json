@@ -135,129 +135,6 @@
           ]
         },
         {
-          "_postman_id": "f93ee760-7521-49a5-bdb4-40e7afee5f25",
-          "name": "HexToHue Copy Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e386966e-d705-45fa-a2a2-cb1cbb0d695a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 204\", function () {",
-                  "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "394f9095-fa01-4458-a9e8-d5037eb7a0c6",
-                "type": "text/javascript",
-                "exec": [
-                  "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
-                  "    var r = (bigint >> 16) & 255;",
-                  "    var g = (bigint >> 8) & 255;",
-                  "    var b = bigint & 255;",
-                  "",
-                  "",
-                  "    r /= 255, g /= 255, b /= 255;",
-                  "    var max = Math.max(r, g, b), min = Math.min(r, g, b);",
-                  "    var h, s, l = (max + min) / 2;",
-                  "",
-                  "    if(max == min){",
-                  "        h = s = 0; // achromatic",
-                  "    } else {",
-                  "        var d = max - min;",
-                  "        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);",
-                  "        switch(max) {",
-                  "            case r: h = (g - b) / d + (g < b ? 6 : 0); break;",
-                  "            case g: h = (b - r) / d + 2; break;",
-                  "            case b: h = (r - g) / d + 4; break;",
-                  "        }",
-                  "        h /= 6;",
-                  "    }",
-                  "",
-                  "   s = s*100;",
-                  "    s = Math.round(s);",
-                  "    l = l*100;",
-                  "    l = Math.round(l);",
-                  "    h = Math.round(360*h);",
-                  "    ",
-                  "    pm.globals.set(\"saturation\", s);",
-                  "    pm.globals.set(\"light\", l);",
-                  "    pm.globals.set(\"hue\", h);",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
-            },
-            "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
-          },
-          "response": [
-            {
-              "id": "6e8b8d78-ad56-41c6-8bb4-ca846f98c9f6",
-              "name": "Hue - update",
-              "originalRequest": {
-                "method": "PUT",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\"hue\" : {\"value\":120}}"
-                },
-                "url": {
-                  "raw": "http://{{ipAddress}}/api/v1/{{authToken}}/state",
-                  "protocol": "http",
-                  "host": [
-                    "{{ipAddress}}"
-                  ],
-                  "path": [
-                    "api",
-                    "v1",
-                    "{{authToken}}",
-                    "state"
-                  ],
-                  "variable": [
-                    {
-                      "key": "auth_token",
-                      "value": "{{authToken}}"
-                    }
-                  ]
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "_postman_previewlanguage": "plain",
-              "header": [
-                {
-                  "key": "Content-Length",
-                  "value": "0",
-                  "name": "Content-Length",
-                  "description": "The length of the response body in octets (8-bit bytes)"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": ""
-            }
-          ]
-        },
-        {
           "_postman_id": "ab6beedc-efda-49f6-9bcc-d09ed93515aa",
           "name": "HexToHue",
           "event": [
@@ -3781,28 +3658,28 @@
   ],
   "variable": [
     {
-      "id": "31f72195-5ae0-42dc-a691-6f13f5a6f52e",
+      "id": "3722ee86-9a72-4d72-81de-cba02ea38724",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "6d3cb2a0-2776-4259-935a-caf64090d838",
+      "id": "226e4794-d796-40f1-adcf-f9fa53c45d4f",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "ab3c9bbb-51fb-4b92-a873-aa0d3c8f17dc",
+      "id": "92ed82c9-ba2f-4669-8423-2858c77eb07c",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "4d00c0a8-7ee8-477f-aaf1-c4be279d179b",
+      "id": "63120e56-6866-4167-b6ca-7670943f382b",
       "value": "",
       "type": "string",
       "disabled": true,
