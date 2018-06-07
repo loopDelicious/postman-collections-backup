@@ -32,7 +32,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "754ab9d8-1b24-4a3b-bc3b-bb48cc452661",
+                "id": "394f9095-fa01-4458-a9e8-d5037eb7a0c6",
                 "type": "text/javascript",
                 "exec": [
                   "   var bigint = parseInt(pm.variables.get(\"hexValue\"), 16);",
@@ -64,9 +64,9 @@
                   "    l = Math.round(l);",
                   "    h = Math.round(360*h);",
                   "    ",
-                  "    pm.variable.set(\"saturation\", s);",
-                  "    pm.variables.set(\"light\", l);",
-                  "    pm.variables.set(\"hue\", h);",
+                  "    pm.globals.set(\"saturation\", s);",
+                  "    pm.globals.set(\"light\", l);",
+                  "    pm.globals.set(\"hue\", h);",
                   ""
                 ]
               }
@@ -3538,28 +3538,28 @@
   ],
   "variable": [
     {
-      "id": "117aa152-868b-4965-ad79-95f8d74b9674",
+      "id": "91bb2117-49fc-4ab4-8b5a-c12429a1f1d1",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "cc8d48a0-1c23-49e9-8302-d8eee66f2194",
+      "id": "a0f1a354-f0de-4735-b427-305bebfd6afd",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "61fc28fd-41e6-4d9a-922a-1d2b7ce815ac",
+      "id": "4513b96b-fb85-4aaf-ada1-760f9a06a99a",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "1b444fac-1bb2-44fb-8830-48e24ae69a5a",
+      "id": "bc537b37-db97-4de6-9ea5-8471c12a640b",
       "value": "",
       "type": "string",
       "disabled": true,
