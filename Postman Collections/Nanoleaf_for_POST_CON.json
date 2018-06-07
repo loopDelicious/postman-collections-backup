@@ -1167,7 +1167,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":0}}"
+              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
             },
             "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
           },
@@ -3277,28 +3277,28 @@
   ],
   "variable": [
     {
-      "id": "5bf6253f-1b0e-4e31-b1e9-b04f88781148",
+      "id": "3bc4884c-048d-45bb-bcf3-5120bff1364b",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "9acc68fc-615a-406c-bd8f-da383df3eba7",
+      "id": "7aea2034-b6ee-41ae-a673-f2922b09a872",
       "key": "hue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "e192e840-e097-4538-bacd-46e0be2cb511",
+      "id": "135bcdee-dc81-494e-a193-bfa11d942db5",
       "key": "saturation",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "941702b7-66e3-4bb9-b365-4acbae812dae",
+      "id": "5ce72d7d-dddd-4e26-ad18-ca0e563eaae8",
       "key": "light",
       "value": "",
       "type": "string",
