@@ -3236,5 +3236,14 @@
         ]
       }
     }
+  ],
+  "variable": [
+    {
+      "id": "523eb530-1595-4d0a-ae85-919d62ed06d8",
+      "key": "hexValue",
+      "value": "",
+      "type": "string",
+      "description": ""
+    }
   ]
 }
