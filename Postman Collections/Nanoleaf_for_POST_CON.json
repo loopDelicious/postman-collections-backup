@@ -3426,7 +3426,7 @@
         },
         {
           "_postman_id": "a357b6dd-0f01-4bdf-b79c-d93778690102",
-          "name": "Brightness - update Copy",
+          "name": "HexToBrightness",
           "event": [
             {
               "listen": "test",
@@ -3531,28 +3531,28 @@
   ],
   "variable": [
     {
-      "id": "51035a72-d4c3-4864-837b-09a77ebf3b9f",
+      "id": "c0ab33a4-69f5-442d-98cb-80f160e37295",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "83e54ef2-51b7-4867-81bb-b2c48d6f6ad8",
+      "id": "be47754d-c3a0-496b-a33d-c15b1f9faadf",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "cf563dbf-3902-49ad-898b-29ffacb7eb82",
+      "id": "11d18052-69db-466d-81a6-45285eb76010",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "86cda493-5029-488e-8d63-4f2ce207361c",
+      "id": "4b5161f5-b013-45ee-852e-dfb87166f90a",
       "key": "light",
       "value": "100",
       "type": "string",
