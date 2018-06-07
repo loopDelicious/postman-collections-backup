@@ -141,15 +141,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "9f4cad20-845e-4036-813f-09176743218d",
+                "id": "020d9dd5-1518-45ff-861b-ff09d6f53a45",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 204\", function () {",
                   "    pm.response.to.have.status(204);",
-                  "});",
-                  "",
-                  "",
-                  ""
+                  "});"
                 ]
               }
             }
@@ -3538,28 +3535,28 @@
   ],
   "variable": [
     {
-      "id": "090e838f-b5d1-4528-8c4f-4fd932e6d67a",
+      "id": "2cc28b61-444d-4d40-9501-0f06f9407186",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "85c6baed-69e7-46a9-9819-20cfcb9a32e6",
+      "id": "447bcec9-d99c-43ee-9d0a-33b67ad103b9",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "d210f0e0-d353-47ee-a0e0-51dc5c8d8068",
+      "id": "b1361be1-c7d3-4d0c-8260-c79ed537d5dd",
       "value": "",
       "type": "string",
       "disabled": true,
       "description": ""
     },
     {
-      "id": "51442e7b-9335-48dc-984b-3094ef02a6ea",
+      "id": "7bca6658-de3e-42cb-9a71-1cdbcfa85afc",
       "value": "",
       "type": "string",
       "disabled": true,
