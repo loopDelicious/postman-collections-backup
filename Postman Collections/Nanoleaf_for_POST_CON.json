@@ -3230,12 +3230,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "9aa09750-d124-498f-815e-1a6799030607",
+                "id": "c6a1d0f5-9b34-4d74-9a44-63f00bb64ed3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 204\", function () {",
                   "    pm.response.to.have.status(204);",
-                  "});"
+                  "});",
+                  "",
+                  "pm.setNextRequest(\"HexToSaturation\");"
                 ]
               }
             },
@@ -3292,7 +3294,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\"hue\" : {\"value\":\"{{hue}}\"}}"
+              "raw": "{\"hue\" : {\"value\":{{hue}}}}"
             },
             "url": "http://{{ipAddress}}/api/v1/{{authToken}}/state"
           },
@@ -3536,28 +3538,28 @@
   ],
   "variable": [
     {
-      "id": "828bbf4a-bae4-4013-b842-c4e8465fafc8",
+      "id": "af1699ce-8b35-4055-859c-f0a4832c08e6",
       "key": "hexValue",
       "value": "",
       "type": "string",
       "description": ""
     },
     {
-      "id": "1cdd3a9e-1da1-4283-8e41-e00c42e96c2a",
+      "id": "a7e93337-ddca-489d-9994-d2beb6a7e251",
       "key": "hue",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "f1cd738f-4662-49c1-8da7-2cb3a0bc6cee",
+      "id": "a1297821-08e3-413e-b1da-9f082d7b7e51",
       "key": "saturation",
       "value": "100",
       "type": "string",
       "description": ""
     },
     {
-      "id": "bd422c67-995c-4137-aa4a-a830cfed36c8",
+      "id": "1c3f1ebb-99f6-4c3b-9705-1597e02a51f1",
       "key": "light",
       "value": "100",
       "type": "string",
